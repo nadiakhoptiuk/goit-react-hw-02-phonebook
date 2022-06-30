@@ -1,4 +1,8 @@
-@import-normalize; /* bring in normalize.css styles */
+@import 'modern-normalize/modern-normalize.css';
+
+:root {
+  --border-color: #afafaf;
+}
 
 body {
   margin: 0;
@@ -12,4 +16,10 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
 }
