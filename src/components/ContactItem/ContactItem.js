@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import userContact from '../../images/userContact.svg';
 import s from './ContactItem.module.css';
 
 export default class ContactItem extends Component {
+  static propTypes = {
+    contactData: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    }),
+    deleteContact: PropTypes.func.isRequired,
+  };
+
   render() {
     const { contactData, deleteContact } = this.props;
 
