@@ -11,6 +11,19 @@ export default class App extends Component {
     filter: '',
   };
 
+  checkContact = (contactObj, reset) => {
+    const nameToAdd = contactObj.name;
+    const { contacts } = this.state;
+
+    if (contacts.some(contact => contact.name === nameToAdd)) {
+      alert(`${nameToAdd} is already in your contacts`);
+      return;
+    }
+
+    this.handleSubmit(contactObj);
+    reset();
+  };
+
   handleSubmit = contactObj => {
     this.setState(prevState => ({
       contacts: [...prevState.contacts, contactObj],
@@ -30,13 +43,13 @@ export default class App extends Component {
   };
 
   render() {
-    const { handleSubmit, onInputFind, filterContacts, state } = this;
+    const { checkContact, onInputFind, filterContacts, state } = this;
     const filteredContacts = filterContacts();
 
     return (
       <>
         <Section title="Phonebook">
-          <FormAddContact onSubmitForm={handleSubmit}></FormAddContact>
+          <FormAddContact onSubmitForm={checkContact}></FormAddContact>
         </Section>
         <Section title="Contacts">
           <FilterInput onFindContacts={onInputFind} state={state}></FilterInput>

@@ -18,10 +18,8 @@ export default class FormAddContact extends Component {
     const { onSubmitForm } = this.props;
 
     evt.preventDefault();
-
     const contactData = { id: nanoid(), ...state };
-    onSubmitForm(contactData);
-    formReset();
+    onSubmitForm(contactData, formReset);
   };
 
   formReset = () => {
