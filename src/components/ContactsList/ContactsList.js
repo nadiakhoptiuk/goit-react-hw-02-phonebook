@@ -5,22 +5,21 @@ import userContact from '../../images/userContact.svg';
 
 export default class ContactsList extends Component {
   render() {
-    const { state } = this.props;
-    const contacts = state.contacts;
+    const { filteredContacts } = this.props;
 
     return (
       <ul className={s.contactsList}>
-        {contacts.map(contact => (
+        {filteredContacts.map(filteredContact => (
           <li key={nanoid()} className={s.contactItem}>
             <img
               className={s.icon}
               src={userContact}
-              alt="icon user"
+              alt="user icon"
               width={30}
               height={30}
             />
-            <p className={s.contactName}>{contact.name}:</p>
-            <p className={s.contactNumber}>{contact.number}</p>
+            <p className={s.contactName}>{filteredContact.name}:</p>
+            <p className={s.contactNumber}>{filteredContact.number}</p>
           </li>
         ))}
       </ul>
