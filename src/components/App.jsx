@@ -7,36 +7,47 @@ export default class App extends Component {
   state = {
     contacts: [],
     name: '',
+    number: '',
   };
 
   handleSubmit = evt => {
     evt.preventDefault();
-    console.log({ contacts: [...this.state.contacts, this.state.name] });
+    console.log({ name: this.state.name, number: this.state.number });
+
     this.setState(prevState => ({
-      contacts: [...prevState.contacts, prevState.name],
+      contacts: [
+        ...prevState.contacts,
+        { name: prevState.name, number: prevState.number },
+      ],
     }));
-    this.formReset(evt);
+    // this.formReset(evt);
   };
 
-  handleChange = evt => {
+  handleChangeName = evt => {
     const newName = evt.target.value;
     this.setState({ name: newName });
   };
 
+  handleChangeNumber = evt => {
+    const newNumber = evt.target.value;
+    this.setState({ number: newNumber });
+  };
+
   formReset = evt => {
-    this.setState({ name: '' });
+    this.setState({ name: '', number: '' });
     evt.target.reset();
   };
 
   render() {
-    const { handleSubmit, handleChange, state } = this;
+    const { handleSubmit, handleChangeName, handleChangeNumber, state } = this;
     return (
       <>
         <Section title="Phonebook">
           <FormAddContact
             onSubmitForm={handleSubmit}
-            onChangeForm={handleChange}
-            // state={state}
+            onChangeName={handleChangeName}
+            onChangeNumber={handleChangeNumber}
+            state={state}
           ></FormAddContact>
         </Section>
         <Section title="Contacts">

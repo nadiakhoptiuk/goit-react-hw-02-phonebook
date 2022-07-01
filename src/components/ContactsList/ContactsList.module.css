@@ -21,11 +21,20 @@
   cursor: pointer;
 }
 
+.contactItem:not(:last-child) {
+  margin-bottom: 10px;
+}
+
 .icon {
   margin-right: 10px;
   color: var(--border-color);
 }
 
-.contactName {
+.contactName,
+.contactNumber {
   margin: 5px 0;
+}
+
+.contactName {
+  margin-right: 10px;
 }

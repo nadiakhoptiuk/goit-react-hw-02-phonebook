@@ -7,6 +7,7 @@ export default class ContactsList extends Component {
   render() {
     const { state } = this.props;
     const contacts = state.contacts;
+
     return (
       <ul className={s.contactsList}>
         {contacts.map(contact => (
@@ -18,7 +19,8 @@ export default class ContactsList extends Component {
               width={30}
               height={30}
             />
-            <p className={s.contactName}>{contact}</p>
+            <p className={s.contactName}>{contact.name}:</p>
+            <p className={s.contactNumber}>{contact.number}</p>
           </li>
         ))}
       </ul>
