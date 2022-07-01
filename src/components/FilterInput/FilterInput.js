@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { debounce } from 'debounce';
 import s from './FilterInput.module.css';
 
 export default class FilterInput extends Component {
@@ -15,7 +14,7 @@ export default class FilterInput extends Component {
               className={s.filterInput}
               type="text"
               name="filter"
-              onChange={debounce(onFindContacts, 100)}
+              onChange={onFindContacts}
             />
           </label>
         ) : (

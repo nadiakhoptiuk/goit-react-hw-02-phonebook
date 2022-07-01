@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import Section from './Section';
 import FormAddContact from './FormAddContact';
 import ContactsList from './ContactsList';
@@ -8,36 +9,12 @@ export default class App extends Component {
   state = {
     contacts: [],
     filter: '',
-    name: '',
-    number: '',
   };
 
-  handleSubmit = evt => {
-    evt.preventDefault();
-
+  handleSubmit = contactObj => {
     this.setState(prevState => ({
-      contacts: [
-        ...prevState.contacts,
-        { name: prevState.name, number: prevState.number },
-      ],
+      contacts: [...prevState.contacts, contactObj],
     }));
-
-    this.formReset(evt);
-  };
-
-  handleChangeName = evt => {
-    const newName = evt.target.value;
-    this.setState({ name: newName });
-  };
-
-  handleChangeNumber = evt => {
-    const newNumber = evt.target.value;
-    this.setState({ number: newNumber });
-  };
-
-  formReset = evt => {
-    this.setState({ name: '', number: '' });
-    evt.target.reset();
   };
 
   onInputFind = evt => {
@@ -53,25 +30,13 @@ export default class App extends Component {
   };
 
   render() {
-    const {
-      handleSubmit,
-      handleChangeName,
-      handleChangeNumber,
-      onInputFind,
-      filterContacts,
-      state,
-    } = this;
+    const { handleSubmit, onInputFind, filterContacts, state } = this;
     const filteredContacts = filterContacts();
 
     return (
       <>
         <Section title="Phonebook">
-          <FormAddContact
-            onSubmitForm={handleSubmit}
-            onChangeName={handleChangeName}
-            onChangeNumber={handleChangeNumber}
-            state={state}
-          ></FormAddContact>
+          <FormAddContact onSubmitForm={handleSubmit}></FormAddContact>
         </Section>
         <Section title="Contacts">
           <FilterInput onFindContacts={onInputFind} state={state}></FilterInput>
