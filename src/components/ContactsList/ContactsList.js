@@ -17,7 +17,6 @@ export default class ContactsList extends Component {
 
   render() {
     const { filteredContacts, deleteContact } = this.props;
-    console.log(filteredContacts);
 
     return (
       <ul className={s.contactsList}>
