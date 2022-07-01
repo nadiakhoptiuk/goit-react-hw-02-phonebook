@@ -4,7 +4,7 @@ import s from './ContactsList.module.css';
 
 export default class ContactsList extends Component {
   render() {
-    const { filteredContacts } = this.props;
+    const { filteredContacts, deleteContact } = this.props;
 
     return (
       <ul className={s.contactsList}>
@@ -12,6 +12,7 @@ export default class ContactsList extends Component {
           <ContactItem
             key={filteredContact.id}
             contactData={filteredContact}
+            deleteContact={deleteContact}
           ></ContactItem>
         ))}
       </ul>

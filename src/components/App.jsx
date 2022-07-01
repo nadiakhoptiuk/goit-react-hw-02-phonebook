@@ -42,8 +42,21 @@ export default class App extends Component {
       : contacts;
   };
 
+  onContactDelete = id => {
+    console.log(id);
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== id),
+    }));
+  };
+
   render() {
-    const { checkContact, onInputFind, filterContacts, state } = this;
+    const {
+      checkContact,
+      onInputFind,
+      filterContacts,
+      onContactDelete,
+      state,
+    } = this;
     const filteredContacts = filterContacts();
 
     return (
@@ -53,7 +66,10 @@ export default class App extends Component {
         </Section>
         <Section title="Contacts">
           <FilterInput onFindContacts={onInputFind} state={state}></FilterInput>
-          <ContactsList filteredContacts={filteredContacts}></ContactsList>
+          <ContactsList
+            filteredContacts={filteredContacts}
+            deleteContact={onContactDelete}
+          ></ContactsList>
         </Section>
       </>
     );
