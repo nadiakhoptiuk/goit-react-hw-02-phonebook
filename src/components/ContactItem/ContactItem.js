@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import userContact from '../../images/userContact.svg';
+import { FaUserAlt } from 'react-icons/fa';
 import s from './ContactItem.module.css';
 
 export default class ContactItem extends Component {
@@ -18,13 +18,7 @@ export default class ContactItem extends Component {
 
     return (
       <li className={s.contactItem}>
-        <img
-          className={s.icon}
-          src={userContact}
-          alt="user icon"
-          width={30}
-          height={30}
-        />
+        <FaUserAlt className={s.icon} />
         <p className={s.contactName}>{contactData.name}:</p>
         <p className={s.contactNumber}>{contactData.number}</p>
         <button

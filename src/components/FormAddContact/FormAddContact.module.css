@@ -16,6 +16,9 @@
 }
 
 .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 50%;
   height: 40px;
   margin: 0 auto;
@@ -34,4 +37,11 @@
 .btn:hover,
 .btn:focus {
   transform: scale(1.05);
+}
+
+.AddContactIcon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  color: var(--border-color);
 }

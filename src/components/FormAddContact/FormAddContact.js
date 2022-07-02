@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
+import { FaUserPlus } from 'react-icons/fa';
 import s from './FormAddContact.module.css';
 
 export default class FormAddContact extends Component {
@@ -63,7 +64,7 @@ export default class FormAddContact extends Component {
           />
         </label>
         <button className={s.btn} type="submit">
-          Add contact
+          <FaUserPlus className={s.AddContactIcon} /> Add contact
         </button>
       </form>
     );
