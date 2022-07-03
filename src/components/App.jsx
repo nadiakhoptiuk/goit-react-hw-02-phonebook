@@ -31,15 +31,17 @@ export default class App extends Component {
   };
 
   onInputFind = evt => {
-    const stringForFilter = evt.target.value.toLowerCase();
+    const stringForFilter = evt.target.value;
     this.setState({ filter: stringForFilter });
   };
 
   filterContacts = () => {
     const { filter: stringForFilter, contacts } = this.state;
+    const normalizedString = stringForFilter.toLowerCase();
+
     return stringForFilter
       ? contacts.filter(contact =>
-          contact.name.toLowerCase().includes(stringForFilter)
+          contact.name.toLowerCase().includes(normalizedString)
         )
       : contacts;
   };
